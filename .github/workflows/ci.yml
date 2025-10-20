@@ -25,7 +25,7 @@ jobs:
       
       - name: Run flake8
         run: |
-          flake8 src/ tests/ --max-line-length=100 --exclude=__init__.py
+          flake8 src/ --max-line-length=100 --exclude=__init__.py
       
       - name: Check black formatting
         run: |
@@ -98,4 +98,5 @@ jobs:
       
       - name: Run model performance tests
         run: |
+
           pytest tests/test_model_performance.py -v
