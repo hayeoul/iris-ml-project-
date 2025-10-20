@@ -29,11 +29,11 @@ jobs:
       
       - name: Check black formatting
         run: |
-          black --check src/ tests/
+          black --check src/
       
       - name: Check import sorting
         run: |
-          isort --check-only src/ tests/
+          isort --check-only src/
 
   unit-tests:
     name: Unit Tests
@@ -53,11 +53,11 @@ jobs:
       
       - name: Run unit tests
         run: |
-          pytest tests/test_data.py tests/test_model.py -v
+          pytest src/tests/test_data.py src/tests/test_model.py -v
       
       - name: Check test coverage
         run: |
-          pytest tests/ --cov=src --cov-report=term --cov-report=xml
+          pytest src/tests/ --cov=src --cov-report=term --cov-report=xml
           coverage report --fail-under=80
 
   integration-tests:
@@ -78,7 +78,7 @@ jobs:
       
       - name: Run integration tests
         run: |
-          pytest tests/test_integration.py -v
+          pytest src/tests/test_integration.py -v
 
   model-validation:
     name: Model Performance
@@ -98,5 +98,4 @@ jobs:
       
       - name: Run model performance tests
         run: |
-
-          pytest tests/test_model_performance.py -v
+          pytest src/tests/test_model_performance.py -v
